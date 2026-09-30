@@ -9,6 +9,8 @@ type Round = {
   imageIndex: number
 }
 
+const SESSION_LENGTH = 30
+
 const shuffle = <T,>(items: T[]) => {
   const result = [...items]
   for (let i = result.length - 1; i > 0; i -= 1) {
@@ -18,11 +20,23 @@ const shuffle = <T,>(items: T[]) => {
   return result
 }
 
-const buildDeck = (): Round[] =>
-  shuffle(brands).map((brand) => ({
+const buildDeck = (): Round[] => {
+  const mainRounds = shuffle(brands).map((brand) => ({
     brand,
     imageIndex: Math.floor(Math.random() * brand.images.length),
   }))
+  const extraRounds = shuffle(brands)
+    .slice(0, SESSION_LENGTH - brands.length)
+    .map((brand) => {
+      const firstRound = mainRounds.find((item) => item.brand.id === brand.id)
+      return {
+        brand,
+        imageIndex: ((firstRound?.imageIndex ?? 0) + 1) % brand.images.length,
+      }
+    })
+
+  return shuffle([...mainRounds, ...extraRounds])
+}
 
 function SpeakerIcon() {
   return (
@@ -46,16 +60,17 @@ function App() {
   const [screen, setScreen] = useState<Screen>('welcome')
   const [deck, setDeck] = useState<Round[]>(buildDeck)
   const [round, setRound] = useState(0)
-  const [answers, setAnswers] = useState<Record<string, Answer>>({})
+  const [answers, setAnswers] = useState<Record<number, Answer>>({})
   const [choice, setChoice] = useState<Answer | null>(null)
   const [failedFile, setFailedFile] = useState<string | null>(null)
+  const [loadedFile, setLoadedFile] = useState<string | null>(null)
   const [soundOn, setSoundOn] = useState(true)
   const timerRef = useRef<number | null>(null)
 
   const current = deck[round]
   const knownCount = Object.values(answers).filter((answer) => answer === 'known').length
-  const learningBrands = useMemo(
-    () => deck.filter(({ brand }) => answers[brand.id] === 'learning'),
+  const learningRounds = useMemo(
+    () => deck.filter((_, index) => answers[index] === 'learning'),
     [answers, deck],
   )
 
@@ -63,6 +78,17 @@ function App() {
     if (timerRef.current) window.clearTimeout(timerRef.current)
     window.speechSynthesis?.cancel()
   }, [])
+
+  useEffect(() => {
+    if (screen !== 'game') return
+    const nextRound = deck[round + 1]
+    if (!nextRound) return
+
+    const nextPhoto = new Image()
+    nextPhoto.src = commonsImage(nextRound.brand.images[nextRound.imageIndex])
+    const nextLogo = new Image()
+    nextLogo.src = commonsImage(nextRound.brand.logo)
+  }, [deck, round, screen])
 
   const speak = (brand: CarBrand) => {
     if (!('speechSynthesis' in window)) return
@@ -86,7 +112,7 @@ function App() {
   const answer = (value: Answer) => {
     if (choice || !current) return
     setChoice(value)
-    setAnswers((previous) => ({ ...previous, [current.brand.id]: value }))
+    setAnswers((previous) => ({ ...previous, [round]: value }))
     if (soundOn) speak(current.brand)
 
     timerRef.current = window.setTimeout(() => {
@@ -100,8 +126,8 @@ function App() {
   }
 
   const repeatLearning = () => {
-    if (!learningBrands.length) return
-    setDeck(shuffle(learningBrands).map(({ brand, imageIndex }) => ({
+    if (!learningRounds.length) return
+    setDeck(shuffle(learningRounds).map(({ brand, imageIndex }) => ({
       brand,
       imageIndex: (imageIndex + 1) % brand.images.length,
     })))
@@ -126,8 +152,8 @@ function App() {
           <button className="start-button" onClick={start}>Поехали! <span>→</span></button>
           <div className="welcome-meta">
             <span><b>{brands.length}</b> марок</span><i />
-            <span><b>{brands.reduce((sum, brand) => sum + brand.images.length, 0)}</b> фото</span><i />
-            <span>без рекламы</span>
+            <span><b>{SESSION_LENGTH}</b> вопросов</span><i />
+            <span><b>{brands.reduce((sum, brand) => sum + brand.images.length, 0)}</b> фото</span>
           </div>
         </section>
       </main>
@@ -142,12 +168,12 @@ function App() {
           <div className="result-badge">{allKnown ? '🏆' : '🏁'}</div>
           <p className="eyebrow">ЗАЕЗД ОКОНЧЕН</p>
           <h1>{allKnown ? 'Вот это знаток!' : 'Отличная поездка!'}</h1>
-          <p className="result-copy">Ты знаешь <strong>{knownCount} из {deck.length}</strong> марок. Ещё немного практики — и узнаешь все!</p>
+          <p className="result-copy">Ты нажал «Знаю» в <strong>{knownCount} из {deck.length}</strong> карточек. Ещё немного практики — и узнаешь все!</p>
           <div className="score-ring" style={{ '--score': `${(knownCount / deck.length) * 360}deg` } as React.CSSProperties}>
             <div><b>{knownCount}</b><span>знаю</span></div>
           </div>
           <div className="result-actions">
-            {learningBrands.length > 0 && <button className="repeat-button" onClick={repeatLearning}>Повторить сложные</button>}
+            {learningRounds.length > 0 && <button className="repeat-button" onClick={repeatLearning}>Повторить сложные</button>}
             <button className="again-button" onClick={start}>Играть ещё раз</button>
           </div>
         </section>
@@ -177,12 +203,30 @@ function App() {
       <section className={`game-card ${choice ? `choice-${choice}` : ''}`}>
         <div className="photo-wrap">
           {failedFile !== fileName ? (
-            <img src={commonsImage(fileName)} alt={`Автомобиль марки ${current.brand.name}`} onError={() => setFailedFile(fileName)} />
+            <>
+              {loadedFile !== fileName && (
+                <div className="photo-loader" role="status">
+                  <span className="loader-wheel" />
+                  <span>Загружаем машину…</span>
+                </div>
+              )}
+              <img
+                key={fileName}
+                className={`car-photo ${loadedFile === fileName ? 'is-loaded' : ''}`}
+                src={commonsImage(fileName)}
+                alt={`Автомобиль марки ${current.brand.name}`}
+                onLoad={() => setLoadedFile(fileName)}
+                onError={() => setFailedFile(fileName)}
+              />
+            </>
           ) : (
             <div className="image-fallback" style={{ background: current.brand.color }}><CarMark /><span>{current.brand.name}</span></div>
           )}
           <div className="photo-shade" />
           <span className="country-chip">{current.brand.country}</span>
+          <a className="brand-logo-badge" href={commonsPage(current.brand.logo)} target="_blank" rel="noreferrer" aria-label={`Логотип ${current.brand.name}`}>
+            <img src={commonsImage(current.brand.logo)} alt={`Логотип ${current.brand.name}`} />
+          </a>
           <a className="credit" href={commonsPage(fileName)} target="_blank" rel="noreferrer">Wikimedia Commons ↗</a>
         </div>
 

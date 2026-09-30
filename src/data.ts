@@ -4,12 +4,13 @@ export type CarBrand = {
   speech: string
   country: string
   color: string
+  logo: string
   images: string[]
 }
 
 export const brands: CarBrand[] = [
   {
-    id: 'audi', name: 'Ауди', speech: 'Ауди', country: 'Германия', color: '#ef4d4d',
+    id: 'audi', name: 'Ауди', speech: 'Ауди', country: 'Германия', color: '#ef4d4d', logo: 'Audi-Logo 2016.svg',
     images: [
       '2018 Audi R8 Coupe V10 plus Front.jpg',
       'Audi A3 SportBack 2017 (front right side).jpg',
@@ -20,7 +21,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'bmw', name: 'БМВ', speech: 'Бэ эм вэ', country: 'Германия', color: '#3682c4',
+    id: 'bmw', name: 'БМВ', speech: 'Бэ эм вэ', country: 'Германия', color: '#3682c4', logo: 'BMW logo (gray).svg',
     images: [
       'Festival automobile international 2011 - BMW 650i - 01.jpg',
       'BMW 1800, Front (2018-06-03 Sp).JPG',
@@ -31,7 +32,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'hyundai', name: 'Хендай', speech: 'Хендай', country: 'Южная Корея', color: '#2772b8',
+    id: 'hyundai', name: 'Хендай', speech: 'Хендай', country: 'Южная Корея', color: '#2772b8', logo: 'Hyundai Motor Company logo.svg',
     images: [
       '2019 Hyundai Santa Fe front 1.21.19.jpg',
       '1989 Hyundai Excel GL Front Left.jpg',
@@ -42,7 +43,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'mazda', name: 'Мазда', speech: 'Мазда', country: 'Япония', color: '#d84c55',
+    id: 'mazda', name: 'Мазда', speech: 'Мазда', country: 'Япония', color: '#d84c55', logo: 'Mazda logo.svg',
     images: [
       'Mazda RX-8 on freeway.jpg',
       'Mazda Familia first generation 1966 at the Mazda-Museum Augsburg - Front one quarter view.jpg',
@@ -53,7 +54,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'mercedes', name: 'Мерседес', speech: 'Мерседес', country: 'Германия', color: '#8a949c',
+    id: 'mercedes', name: 'Мерседес', speech: 'Мерседес', country: 'Германия', color: '#8a949c', logo: 'Mercedes-Benz Logo 2010.svg',
     images: [
       'AMG Mercedes-Benz C204 (DTM).jpg',
       'Mercedes-Benz 230 G, Techno-Classica 2018, Essen (IMG 9831).jpg',
@@ -64,7 +65,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'mitsubishi', name: 'Мицубиси', speech: 'Мицубиси', country: 'Япония', color: '#df4248',
+    id: 'mitsubishi', name: 'Мицубиси', speech: 'Мицубиси', country: 'Япония', color: '#df4248', logo: 'Mitsubishi motors new logo.svg',
     images: [
       'Mitsubishi Engelberg Tourer Genf 2019 1Y7A5813.jpg',
       '2008 Changfeng-Mitsubishi Pajero iO, front 8.8.18.jpg',
@@ -75,7 +76,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'nissan', name: 'Ниссан', speech: 'Ниссан', country: 'Япония', color: '#c8494f',
+    id: 'nissan', name: 'Ниссан', speech: 'Ниссан', country: 'Япония', color: '#c8494f', logo: 'Nissan brand wordmark.svg',
     images: [
       'Nissan Qashqai, Bj. 2008 - Front (2008-09-21 ret).jpg',
       'Nissan IMk Concept, 2021, front, Nissan Gallery HQ.jpg',
@@ -86,7 +87,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'renault', name: 'Рено', speech: 'Рено', country: 'Франция', color: '#f1b927',
+    id: 'renault', name: 'Рено', speech: 'Рено', country: 'Франция', color: '#f1b927', logo: 'Renault Logo 1972.svg',
     images: [
       '2015 Renault Clio Expression DCi Grandtour (Front ).png',
       'Renault 6 front 20080918.jpg',
@@ -97,7 +98,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'skoda', name: 'Шкода', speech: 'Шкода', country: 'Чехия', color: '#48a56a',
+    id: 'skoda', name: 'Шкода', speech: 'Шкода', country: 'Чехия', color: '#48a56a', logo: 'Skoda-Auto-Logo-2011-present.svg',
     images: [
       '2018 Skoda Kodiaq Scout TDi SCR 4X4 2.0 Front.jpg',
       '2019 Skoda Scala SE TDi 1.6 Front.jpg',
@@ -108,7 +109,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'toyota', name: 'Тойота', speech: 'Тойота', country: 'Япония', color: '#df4747',
+    id: 'toyota', name: 'Тойота', speech: 'Тойота', country: 'Япония', color: '#df4747', logo: 'Toyota EU.svg',
     images: [
       '2022 Toyota Corolla Cross L FWD, Front Left, 11-21-2021.jpg',
       'DSC00769 Toyota Yaris, Carabinieri, Front Left.jpg',
@@ -119,7 +120,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'lada', name: 'Лада', speech: 'Лада', country: 'Россия', color: '#4b8de8',
+    id: 'lada', name: 'Лада', speech: 'Лада', country: 'Россия', color: '#4b8de8', logo: 'Lada company logo image.png',
     images: [
       '1986 Lada Niva in Beige, Front Right, 04-03-2022.jpg',
       'Lada 1600, Košice (1).jpg',
@@ -130,7 +131,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'volkswagen', name: 'Фольксваген', speech: 'Фольксваген', country: 'Германия', color: '#2378c7',
+    id: 'volkswagen', name: 'Фольксваген', speech: 'Фольксваген', country: 'Германия', color: '#2378c7', logo: 'Volkswagen logo 2019.svg',
     images: [
       '1957 Volkswagen Beetle, export model, in front of Porta Nigra in Trier 2023-05-01.jpg',
       '2006 SAIC-Volkswagen Polo Jinqu (front).jpg',
@@ -141,7 +142,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'bentley', name: 'Бентли', speech: 'Бентли', country: 'Великобритания', color: '#397969',
+    id: 'bentley', name: 'Бентли', speech: 'Бентли', country: 'Великобритания', color: '#397969', logo: 'Bentley Logo.jpg',
     images: [
       'Bentley Arnage (front).jpg',
       'Bentley Supercharged 4,5 l Bj 1931 - 1989.jpg',
@@ -152,7 +153,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'chevrolet', name: 'Шевроле', speech: 'Шевроле', country: 'США', color: '#d6aa34',
+    id: 'chevrolet', name: 'Шевроле', speech: 'Шевроле', country: 'США', color: '#d6aa34', logo: 'Chevrolet simple logo.svg',
     images: [
       'Chevrolet-Cobalt-Coupe.JPG',
       '2006 Chevrolet Cobalt LT, Front Right, 04-06-2020.jpg',
@@ -163,7 +164,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'chrysler', name: 'Крайслер', speech: 'Крайслер', country: 'США', color: '#5d86a0',
+    id: 'chrysler', name: 'Крайслер', speech: 'Крайслер', country: 'США', color: '#5d86a0', logo: 'Chrysler brand logo 2026.svg',
     images: [
       '1961 Chrysler New Yorker, front view (low).jpg',
       'Chrysler 300M Front.jpg',
@@ -174,7 +175,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'citroen', name: 'Ситроен', speech: 'Ситроен', country: 'Франция', color: '#e95d60',
+    id: 'citroen', name: 'Ситроен', speech: 'Ситроен', country: 'Франция', color: '#e95d60', logo: 'Citroen 2022.svg',
     images: [
       '12-03-01-autostadtr-by-RalfR-25 6 7 8 9 fused edit.jpg',
       '1977 Citroën automobile rouge left front view.jpg',
@@ -185,7 +186,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'ferrari', name: 'Феррари', speech: 'Феррари', country: 'Италия', color: '#e72b35',
+    id: 'ferrari', name: 'Феррари', speech: 'Феррари', country: 'Италия', color: '#e72b35', logo: 'Ferrari wordmark.svg',
     images: [
       'Ferrari 365 GTB 4 Daytona, Bj. 1970 (2007-07-22).jpg',
       'Ferrari 365 GTB 4 Daytona Coupe , Grand Basel 2018 (Ank Kumar) 02.jpg',
@@ -196,7 +197,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'ford', name: 'Форд', speech: 'Форд', country: 'США', color: '#3475bd',
+    id: 'ford', name: 'Форд', speech: 'Форд', country: 'США', color: '#3475bd', logo: 'Ford logo flat.svg',
     images: [
       'Ford P1 (Front 2011-09-24 Sp).JPG',
       'Ford V8, Baujahr 1937, Deutsch-Karosserie (2014-09-13 Sp).jpg',
@@ -207,7 +208,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'gaz', name: 'ГАЗ', speech: 'Газ', country: 'Россия', color: '#557b9b',
+    id: 'gaz', name: 'ГАЗ', speech: 'Газ', country: 'Россия', color: '#557b9b', logo: 'Emblem GAZ an einem Wolga cropped.JPG',
     images: [
       'GAZ-21 "Volga" (front view).jpg',
       'Gaz-31029-front-part.jpg',
@@ -218,7 +219,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'honda', name: 'Хонда', speech: 'Хонда', country: 'Япония', color: '#d8474d',
+    id: 'honda', name: 'Хонда', speech: 'Хонда', country: 'Япония', color: '#d8474d', logo: 'Honda logo.svg',
     images: [
       'Honda Accord 1993 Finland.JPG',
       'Honda S 800 Front (2011-06-19) b.jpg',
@@ -229,7 +230,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'infiniti', name: 'Инфинити', speech: 'Инфинити', country: 'Япония', color: '#766f72',
+    id: 'infiniti', name: 'Инфинити', speech: 'Инфинити', country: 'Япония', color: '#766f72', logo: 'Infiniti Front Emblem - 2013 Infiniti G37 IPL Convertible (9201465409).jpg',
     images: [
       "'14 Infiniti Q70 -- Front (MIAS '14).jpg",
       "'14 Infiniti QX80 -- Front (MIAS '14).jpg",
@@ -240,7 +241,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'lexus', name: 'Лексус', speech: 'Лексус', country: 'Япония', color: '#7d6d5d',
+    id: 'lexus', name: 'Лексус', speech: 'Лексус', country: 'Япония', color: '#7d6d5d', logo: 'Lexus Logo.svg',
     images: [
       'Lexus LC Convertible Concept Genf 2019 1Y7A5653.jpg',
       'Lexus SC400 front.jpg',
@@ -251,7 +252,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'mini', name: 'Мини Купер', speech: 'Мини Купер', country: 'Великобритания', color: '#4c826f',
+    id: 'mini', name: 'Мини Купер', speech: 'Мини Купер', country: 'Великобритания', color: '#4c826f', logo: 'MINI logo.svg',
     images: [
       'Dülmen, Dernekamp, Mini Hatch Cooper -- 2018 -- 1545-51.jpg',
       'Dülmen, Kirchspiel, Börnste, BMW Mini -- 2019 -- 7207-13.jpg',
@@ -262,7 +263,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'peugeot', name: 'Пежо', speech: 'Пежо', country: 'Франция', color: '#53769d',
+    id: 'peugeot', name: 'Пежо', speech: 'Пежо', country: 'Франция', color: '#53769d', logo: 'Peugeot logo 1991-1998.png',
     images: [
       '1959 Peugeot 403 1.5 Front.jpg',
       '2022 - Peugeot 308 III (C) - 157.jpg',
@@ -273,7 +274,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'volvo', name: 'Вольво', speech: 'Вольво', country: 'Швеция', color: '#4d7899',
+    id: 'volvo', name: 'Вольво', speech: 'Вольво', country: 'Швеция', color: '#4d7899', logo: 'Volvo-Iron-Mark-Black.svg',
     images: [
       '1966 Volvo 122 two-door in Black, front right.jpg',
       '2009-04-18 Volvo in front of Baldwin Auditorium.jpg',
@@ -284,7 +285,7 @@ export const brands: CarBrand[] = [
     ],
   },
   {
-    id: 'tesla', name: 'Тесла', speech: 'Тесла', country: 'США', color: '#d94545',
+    id: 'tesla', name: 'Тесла', speech: 'Тесла', country: 'США', color: '#d94545', logo: 'Tesla Motors.svg',
     images: [
       'Tesla front.jpg',
       '20180630 Tesla Model S 70D 2015 midnight blue left front.jpg',
