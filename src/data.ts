@@ -295,6 +295,72 @@ export const brands: CarBrand[] = [
       'Tesla X Electrodrive (front view).jpg',
     ],
   },
+  {
+    id: 'dodge', name: 'Додж', speech: 'Додж', country: 'США', color: '#c9443f', logo: 'Dodge 1969 logo.svg',
+    images: [
+      'Dodge Challenger Eté2016.jpg',
+      '1950 Dodge Wayfarer Sportabout, front left (Hershey 2019).jpg',
+      '2018 Dodge Grand Caravan SE in silver - front view.jpg',
+      '2005 Dodge Ram Front view.jpg',
+      'Dodge Dart (2013) 1X7A7366.jpg',
+      'White Dodge Challenger SRT front view.jpg',
+    ],
+  },
+  {
+    id: 'fiat', name: 'Фиат', speech: 'Фиат', country: 'Италия', color: '#b83f4c', logo: 'FIAT logo coloured.svg',
+    images: [
+      'Fiat 850 Coupé Front (2013-09-15 Spu).JPG',
+      'Fiat 500 Topolino 1948 Front.jpg',
+      'Fiat Argo 2020 Trekking in Uruguay (front).jpg',
+      'DSC00876 Fiat Punto, Carabinieri Polizia Militare, Front Left.jpg',
+      'DSC00884 Fiat Tipo Hatchback Carabinieri, Front Right.jpg',
+      'DSC00889 Fiat Tipo, Bolzano Municipal Police, Front Right.jpg',
+    ],
+  },
+  {
+    id: 'seat', name: 'Сеат', speech: 'Сеат', country: 'Испания', color: '#dc5549', logo: 'SEAT Logo from 2017.svg',
+    images: [
+      'Seat Altea front 20080215.jpg',
+      'Seat Cordoba front 20080326.jpg',
+      'SEAT 127 frontal.jpg',
+      'SEAT Leon SportUK.jpg',
+      'SEAT Ateca Front Full LED Lightning.jpg',
+      '2018 SEAT Arona SE Technology TSi 1.0 Front (1).jpg',
+    ],
+  },
+  {
+    id: 'kia', name: 'Киа', speech: 'Киа', country: 'Южная Корея', color: '#c6464b', logo: 'KIA-Logo-1994-2012.png',
+    images: [
+      '2017 Kia Picanto GT-Line S 1.2 Front.jpg',
+      'Kia Sportage (NQ5) in White, front left.jpg',
+      'White KIA Seltos (Front).jpg',
+      '2017 Dongfeng-Yueda-Kia KX7 (front).jpg',
+      '2011 Kia Soul +, front left, 02-02-2024.jpg',
+      '2024 Kia K3 Cross GT Line (Colombia) front view.png',
+    ],
+  },
+  {
+    id: 'geely', name: 'Джили', speech: 'Джили', country: 'Китай', color: '#376aa3', logo: 'Geely Logo 2022.svg',
+    images: [
+      'Geely Icon 001.jpg',
+      'Geely Emgrand GSe front in Kyiv, Ukraine.jpg',
+      'Geely Emgrand L on display front.jpg',
+      'Geely Binrui Cool in the showroom, front quarter.jpg',
+      'Geely Binyue facelift parked in a park, front quarter.jpg',
+      '2024 Geely Galaxy E5 front view.png',
+    ],
+  },
+  {
+    id: 'daewoo', name: 'Дэу', speech: 'Дэу', country: 'Южная Корея', color: '#4478b7', logo: 'Daewoo-motor-logo.jpg',
+    images: [
+      '20100801 daewoo gentra 001.jpg',
+      'Daewoo Cielo front.jpg',
+      'Daewoo Super Salon front.jpg',
+      'Daewoo Tacuma, KRK (front).jpg',
+      'Daewoo Nubira, WAW(3).jpg',
+      '2001 Daewoo Lanos S Sedan, front right, 10-21-2022.jpg',
+    ],
+  },
 ]
 
 export const commonsImage = (fileName: string) =>

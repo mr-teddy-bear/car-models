@@ -21,12 +21,15 @@ const shuffle = <T,>(items: T[]) => {
 }
 
 const buildDeck = (): Round[] => {
-  const mainRounds = shuffle(brands).map((brand) => ({
+  const mainRounds = shuffle(brands)
+    .slice(0, Math.min(SESSION_LENGTH, brands.length))
+    .map((brand) => ({
     brand,
     imageIndex: Math.floor(Math.random() * brand.images.length),
   }))
+  const extraRoundCount = Math.max(0, SESSION_LENGTH - mainRounds.length)
   const extraRounds = shuffle(brands)
-    .slice(0, SESSION_LENGTH - brands.length)
+    .slice(0, extraRoundCount)
     .map((brand) => {
       const firstRound = mainRounds.find((item) => item.brand.id === brand.id)
       return {
